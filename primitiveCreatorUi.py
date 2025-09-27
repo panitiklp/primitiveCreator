@@ -34,6 +34,7 @@ class PrimitiveCreatorDialog(QtWidgets.QDialog):
 
 		self.name_label = QtWidgets.QLabel('Name:')
 		self.name_lineEdit = QtWidgets.QLineEdit()
+		self.name_lineEdit.setStyleSheet('background-color: white; color:#005C53;font-family:Caveat')
 		self.name_layout.addWidget(self.name_label)
 		self.name_layout.addWidget(self.name_lineEdit)
 
@@ -42,10 +43,20 @@ class PrimitiveCreatorDialog(QtWidgets.QDialog):
 		self.create_button = QtWidgets.QPushButton('Create')
 		self.cancel_button = QtWidgets.QPushButton('Cancel')
 		self.button_layout.addStretch()
+
 		self.button_layout.addWidget(self.create_button)
+		self.create_button.setStyleSheet(
+			'''
+			QPushButton {
+				background-color: #042940;
+			}
+			'''
+		)
+
 		self.button_layout.addWidget(self.cancel_button)
 
 		self.initIconWidgets()
+		# self.setWindowOpacity(0.9)
 
 	def initIconWidgets(self):
 		prims = ['cone', 'cube', 'sphere', 'torus']
@@ -53,7 +64,6 @@ class PrimitiveCreatorDialog(QtWidgets.QDialog):
 			item = QtWidgets.QListWidgetItem(prim)
 			item.setIcon(QtGui.QIcon(os.path.join(ICON_PATH, f'{prim}.png')))
 			self.primitive_listWidget.addItem(item)
-
 
 
 def run():
